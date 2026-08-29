@@ -52,52 +52,75 @@
                 margin-right: -360px;
             }
 
-            /* --- NEW SUBHEADER ROW (Text + Images side-by-side) --- */
-            .subheader-row {
-                display: flex;
-                justify-content: space-between;
-                align-items: center; /* Keeps text and images level */
-                padding: 0 40px;
-                margin-top: 25px; /* Clean gap below the masthead */
-            }
-
+            /* --- SUBHEADER LINE --- */
             .subheading {
                 font-family: Georgia, 'Times New Roman', Times, serif;
                 font-weight: bold;
                 color: black;
                 font-size: 17px;
-                margin: 0; /* Reset margins to let flexbox handle alignment */
+                position: absolute;
+                top: 170px;  /* Clean distance below the slogan bar */
+                left: 40px;
+                margin: 0;
             }
 
-            /* HORIZONTAL IMAGE SYSTEM */
+            /* --- HORIZONTAL OVERLAPPING IMAGES SYSTEM --- */
             .image-row-desktop {
                 display: flex;
-                flex-direction: row; /* Forces images to sit in a line */
+                flex-direction: row; 
                 align-items: center;
-                gap: 15px; /* Perfect space between images */
+                position: absolute;
+                top: 150px; /* Safe distance below the black slogan bar */
+                right: 40px; /* Locked to the right wall */
+                z-index: 10;
             }
-            .img1-img { width: 130px; height: 130px; object-fit: contain; }
-            .img2-img { width: 130px; height: 130px; object-fit: contain; }
-            .img3-img { width: 160px; height: 160px; object-fit: contain; }
+            
+            /* Sizing and overlap spacing rules */
+            .img1-img { 
+                width: 130px; 
+                height: 130px; 
+                object-fit: contain;
+                position: relative;
+                z-index: 1;
+            }
+            .img2-img { 
+                width: 130px; 
+                height: 130px; 
+                object-fit: contain;
+                margin-left: -40px; /* Pulls image 2 over image 1 */
+                position: relative;
+                z-index: 2;
+            }
+            .img3-img { 
+                width: 160px; 
+                height: 160px; 
+                object-fit: contain;
+                margin-left: -50px; /* Pulls image 3 over image 2 */
+                position: relative;
+                z-index: 3;
+            }
 
-            /* --- ARTICLES SECTION --- */
+            /* --- FIXED TEXT SPACING SYSTEM --- */
             .article-links {
                 display: flex;
                 flex-direction: column;
-                gap: 15px; /* Controlled distance between Link 1 and Link 2 */
-                padding: 0 40px;
-                margin-top: 30px; /* FIXED: Gentle spacing from the subheader line */
+                gap: 20px; 
+                position: absolute;
+                top: 230px; /* Balanced window below August Edition */
+                left: 40px;
+                width: 320px; /* Prevent text from crashing into right-aligned images */
             }
             .text1, .text2 {
                 font-family: Georgia, 'Times New Roman', Times, serif;
                 color: black;
-                font-size: 14px;
+                font-size: 12px;
                 text-decoration: none;
                 line-height: 1.4;
                 text-align: left;
+                display: block;
             }
 
-            /* Desktop absolute fixed decorations */
+            /* Desktop decorations */
             .landscape {
                 position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); z-index: 9999; width: 1199px; height: 667px; pointer-events: none;
             }
@@ -105,8 +128,8 @@
                 color: black; font-size: 20px; font-family: Georgia, 'Times New Roman', Times, serif; position: fixed; bottom: 450px; left: 142px; z-index: 10000;
             }
 
-            /* Responsive rules for mobile screen views */
-            @media (max-width: 1099px) {
+            /* Mobile Layout Overrides (Screens under 1099px) */
+            @media (max-width: 1199px) {
                 .newspaper-box {
                     width: 100%;          
                     max-width: 100%;
@@ -120,26 +143,27 @@
                     display: none !important;
                 }
                 
-                /* Hides the images container completely on mobile */
+                /* Disappears completely on mobile viewports */
                 .image-row-desktop {
                      display: none !important;
                 }
                 
-                /* Cleans up subheader position so it doesn't clip on mobile */
-                .subheader-row {
-                    display: block;
-                    padding: 0 20px;
-                    margin-top: 15px;
-                }
+                /* Strips absolute positioning for a clean mobile stack layout */
                 .subheading {
+                    position: static !important;
+                    display: block !important;
+                    margin-top: 20px !important;
+                    margin-left: 20px !important;
                     text-align: left;
                 }
 
-                /* Mobile spacing for article list layout */
                 .article-links {
-                    padding: 0 20px;
-                    margin-top: 20px; /* Clean gap on phone viewports */
-                    gap: 20px;
+                    position: static !important;
+                    display: flex !important;
+                    width: auto !important;
+                    margin-top: 20px !important; 
+                    padding: 0 20px !important;
+                    gap: 15px !important;
                 }
                 .text1, .text2 {
                     font-size: 16px; 
@@ -154,18 +178,16 @@
             <h3 class="slogan">यत्र सत्यस्य गभीरात् शब्दाः निर्गच्छन्ति।</h3>
             <h3 class="slogan-french">JE PENSE, <br> DONC QUE JE SUIS!</h3>
             
-            <!-- NEW ROW: "August Edition" and Horizontal Images sit side-by-side -->
-            <div class="subheader-row">
-                <h5 class="subheading">August Edition</h5> 
-                
-                <div class="image-row-desktop">
-                    <img src="images/image (1).png" class="img1-img" alt="Graphic 1">
-                    <img src="images/image (2).png" class="img2-img" alt="Graphic 2">
-                    <img src="images/narcissus.png" class="img3-img" alt="Narcissus">
-                </div>
-            </div> 
+            <h5 class="subheading">August Edition</h5> 
+            
+            <!-- Horizontal images row fanning over each other -->
+            <div class="image-row-desktop">
+                <img src="images/image (1).png" class="img1-img" alt="Graphic 1">
+                <img src="images/image (2).png" class="img2-img" alt="Graphic 2">
+                <img src="images/narcissus.png" class="img3-img" alt="Narcissus">
+            </div>
 
-            <!-- NEW CLEAN LINKS STACK (With manageable text gaps) -->
+            <!-- Controlled link layout -->
             <div class="article-links">
                 <a href="articles-intellekt/aug-01.html" class="text1">
                     01: "Coming-of-Age" <br> A lie concealed in the TV screen?
@@ -175,7 +197,7 @@
                 </a>
             </div>
 
-        </div> <!-- Main Newspaper End -->
+        </div> 
 
         <img src="images/7d80ef285fed66f56e3843446fee56e2 (1).png" class="landscape">
         <h2 class="dps">No matter what <br> anybody tells you, <br> Words and ideas can <br> change the world." </h2>
