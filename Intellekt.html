@@ -3,7 +3,6 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
-            /* Global reset */
             html, body {
                 margin: 0;
                 padding: 0;
@@ -11,7 +10,6 @@
                 overflow-x: hidden;
                 overflow-y: auto;
             }
-
             .newspaper-box {
                 background-color: #dad5d5; 
                 border: 2px solid #000000; 
@@ -21,6 +19,7 @@
                 margin: auto; 
                 margin-top: 75px; 
                 position: relative;
+                padding-bottom: 50px; 
             }
             .newspaper-title {
                 font-family: 'Edwardian Script ITC', 'Kunstler Script', 'Bickham Script Pro', serif;
@@ -41,6 +40,7 @@
                 text-align: center;
                 padding: 7px;
                 margin-top: -7px;
+                margin-bottom: 0;
             }
             .slogan-french {
                 font-family: 'Times New Roman', Times, serif;
@@ -52,83 +52,37 @@
                 margin-right: -360px;
             }
 
-            /* --- SUBHEADER LINE --- */
             .subheading {
                 font-family: Georgia, 'Times New Roman', Times, serif;
                 font-weight: bold;
                 color: black;
                 font-size: 17px;
-                position: absolute;
-                top: 170px;  /* Clean distance below the slogan bar */
-                left: 40px;
-                margin: 0;
+                margin: 25px 0 0 40px; 
+                text-align: left;
             }
-
-            /* --- HORIZONTAL OVERLAPPING IMAGES SYSTEM --- */
-            .image-row-desktop {
-                display: flex;
-                flex-direction: row; 
-                align-items: center;
-                position: absolute;
-                top: 150px; /* Safe distance below the black slogan bar */
-                right: 40px; /* Locked to the right wall */
-                z-index: 10;
-            }
-            
-            /* Sizing and overlap spacing rules */
-            .img1-img { 
-                width: 130px; 
-                height: 130px; 
-                object-fit: contain;
-                position: relative;
-                z-index: 1;
-            }
-            .img2-img { 
-                width: 130px; 
-                height: 130px; 
-                object-fit: contain;
-                margin-left: -40px; /* Pulls image 2 over image 1 */
-                position: relative;
-                z-index: 2;
-            }
-            .img3-img { 
-                width: 160px; 
-                height: 160px; 
-                object-fit: contain;
-                margin-left: -50px; /* Pulls image 3 over image 2 */
-                position: relative;
-                z-index: 3;
-            }
-
-            /* --- FIXED TEXT SPACING SYSTEM --- */
             .article-links {
                 display: flex;
                 flex-direction: column;
                 gap: 20px; 
-                position: absolute;
-                top: 230px; /* Balanced window below August Edition */
-                left: 40px;
-                width: 320px; /* Prevent text from crashing into right-aligned images */
+                margin: 20px 0 0 40px; 
+                width: auto;
+                max-width: 560px;
             }
             .text1, .text2 {
                 font-family: Georgia, 'Times New Roman', Times, serif;
                 color: black;
-                font-size: 12px;
+                font-size: 14px; 
                 text-decoration: none;
                 line-height: 1.4;
                 text-align: left;
                 display: block;
             }
-
-            /* Desktop decorations */
             .landscape {
                 position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); z-index: 9999; width: 1199px; height: 667px; pointer-events: none;
             }
             .dps {
                 color: black; font-size: 20px; font-family: Georgia, 'Times New Roman', Times, serif; position: fixed; bottom: 450px; left: 142px; z-index: 10000;
             }
-
-            /* Mobile Layout Overrides (Screens under 1099px) */
             @media (max-width: 1199px) {
                 .newspaper-box {
                     width: 100%;          
@@ -142,28 +96,12 @@
                 .dps {
                     display: none !important;
                 }
-                
-                /* Disappears completely on mobile viewports */
-                .image-row-desktop {
-                     display: none !important;
-                }
-                
-                /* Strips absolute positioning for a clean mobile stack layout */
                 .subheading {
-                    position: static !important;
-                    display: block !important;
-                    margin-top: 20px !important;
-                    margin-left: 20px !important;
-                    text-align: left;
+                    margin: 20px 0 0 20px; 
                 }
-
                 .article-links {
-                    position: static !important;
-                    display: flex !important;
-                    width: auto !important;
-                    margin-top: 20px !important; 
-                    padding: 0 20px !important;
-                    gap: 15px !important;
+                    margin: 15px 0 0 20px; 
+                    gap: 15px;
                 }
                 .text1, .text2 {
                     font-size: 16px; 
@@ -177,17 +115,7 @@
             <h1 class="newspaper-title">The Intellekt</h1> 
             <h3 class="slogan">यत्र सत्यस्य गभीरात् शब्दाः निर्गच्छन्ति।</h3>
             <h3 class="slogan-french">JE PENSE, <br> DONC QUE JE SUIS!</h3>
-            
             <h5 class="subheading">August Edition</h5> 
-            
-            <!-- Horizontal images row fanning over each other -->
-            <div class="image-row-desktop">
-                <img src="images/image (1).png" class="img1-img" alt="Graphic 1">
-                <img src="images/image (2).png" class="img2-img" alt="Graphic 2">
-                <img src="images/narcissus.png" class="img3-img" alt="Narcissus">
-            </div>
-
-            <!-- Controlled link layout -->
             <div class="article-links">
                 <a href="articles-intellekt/aug-01.html" class="text1">
                     01: "Coming-of-Age" <br> A lie concealed in the TV screen?
@@ -196,9 +124,7 @@
                     02: Narcissus: <br> Are we really any different?
                 </a>
             </div>
-
         </div> 
-
         <img src="images/7d80ef285fed66f56e3843446fee56e2 (1).png" class="landscape">
         <h2 class="dps">No matter what <br> anybody tells you, <br> Words and ideas can <br> change the world." </h2>
     </body>
