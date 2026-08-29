@@ -91,6 +91,20 @@
                 font-size: 12px;
                 top: 267px;  
                 left: 60px;
+            .landscape {
+                position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);z-index: 9999;width: 1199px; height: 667px; pointer-events: none;
+            }
+            .dps {
+                color: black; font-size: 20px; font-family: Georgia, 'Times New Roman', Times, serif; position: fixed; bottom: 450px; left: 142px; z-index: 10000;"
+            }
+            @media (max-width: 1199px) {
+            .landscape,
+            .slogan,
+            .slogan-french,
+            .dps {
+            display: none !important;
+        }
+    }
         </style>
     </head>
     <body style="background-color: cornsilk;">
@@ -111,7 +125,7 @@
                 <img src="images/narcissus.png" class="img3-img">
             </div>
             </div>
-        <img src="images/7d80ef285fed66f56e3843446fee56e2 (1).png" style="position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);z-index: 9999;width: 1199px; height: 667px; pointer-events: none;">
-        <h2 style="color: black; font-size: 20px; font-family: Georgia, 'Times New Roman', Times, serif; position: fixed; bottom: 450px; left: 142px; z-index: 10000;"> "No matter what <br> anybody tells you, <br> Words and ideas can <br> change the world." </h2>
+        <img src="images/7d80ef285fed66f56e3843446fee56e2 (1).png" class="landscape">
+        <h2 class="dps">No matter what <br> anybody tells you, <br> Words and ideas can <br> change the world." </h2>
     </body>
 </html>
